@@ -15,6 +15,15 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('employees.index')" :active="request()->routeIs('employees.index')">
+                        {{ __('Employees') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('departments.index')" :active="request()->routeIs('departments.index')">
+                        {{ __('Departments') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('attendances.index')" :active="request()->routeIs('attendances.index')">
+                        {{ __('Attendances') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -70,6 +79,15 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('employees.index')" :active="request()->routeIs('employees.index')">
+                {{ __('Employees') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('departments.index')" :active="request()->routeIs('departments.index')">
+                {{ __('Departments') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('attendances.index')" :active="request()->routeIs('attendances.index')">
+                {{ __('Attendances') }}
+            </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->
@@ -98,3 +116,4 @@
         </div>
     </div>
 </nav>
+

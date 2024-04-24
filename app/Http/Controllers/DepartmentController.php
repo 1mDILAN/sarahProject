@@ -12,7 +12,7 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        //
+        return view('departments.index');
     }
 
     /**
@@ -20,7 +20,7 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        //
+        return view('departments.create');
     }
 
     /**
@@ -36,7 +36,7 @@ class DepartmentController extends Controller
      */
     public function show(Department $department)
     {
-        //
+        return view('departments.show');
     }
 
     /**
@@ -44,7 +44,7 @@ class DepartmentController extends Controller
      */
     public function edit(Department $department)
     {
-        //
+        return view('departments.edit');
     }
 
     /**
@@ -60,6 +60,6 @@ class DepartmentController extends Controller
      */
     public function destroy(Department $department)
     {
-        //
+        return view('departments.destroy');
     }
 }

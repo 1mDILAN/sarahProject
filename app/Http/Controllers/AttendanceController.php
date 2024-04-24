@@ -12,7 +12,7 @@ class AttendanceController extends Controller
      */
     public function index()
     {
-        //
+        return view('attendances.index');
     }
 
     /**
@@ -20,7 +20,7 @@ class AttendanceController extends Controller
      */
     public function create()
     {
-        //
+        return view('attendances.create');
     }
 
     /**
@@ -36,7 +36,7 @@ class AttendanceController extends Controller
      */
     public function show(Attendance $attendance)
     {
-        //
+        return view('attendances.show');
     }
 
     /**
@@ -44,7 +44,7 @@ class AttendanceController extends Controller
      */
     public function edit(Attendance $attendance)
     {
-        //
+        return view('attendances.edit');
     }
 
     /**
@@ -60,6 +60,6 @@ class AttendanceController extends Controller
      */
     public function destroy(Attendance $attendance)
     {
-        //
+        return view('attendances.destroy');
     }
 }

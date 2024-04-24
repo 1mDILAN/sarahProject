@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Employee;
 use Illuminate\Http\Request;
+use App\Models\Department;
 
 class EmployeeController extends Controller
 {
@@ -12,7 +13,8 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        //
+        $employees = Employee::all();
+        return view('employees.index', ['employees' => $employees]);
     }
 
     /**
@@ -20,7 +22,8 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        //
+        $departments = Department::all();
+        return view('employees.create', ['departments' => $departments]);
     }
 
     /**
@@ -28,7 +31,17 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $employee = new Employee();
+        $employee->name = $request->input('name');
+        $employee->surname = $request->input('surname');
+        $employee->position = $request->input('position');
+        $employee->department_id = $request->input('department_id');
+        $employee->hiring_date = $request->input('hiring_date');
+        $employee->salary = $request->input('salary');
+
+        $employee->save();
+
+        return redirect()->route('employees.index');
     }
 
     /**
@@ -36,7 +49,7 @@ class EmployeeController extends Controller
      */
     public function show(Employee $employee)
     {
-        //
+        return view('employees.show');
     }
 
     /**
@@ -44,7 +57,7 @@ class EmployeeController extends Controller
      */
     public function edit(Employee $employee)
     {
-        //
+        return view('employees.edit');
     }
 
     /**
@@ -60,6 +73,6 @@ class EmployeeController extends Controller
      */
     public function destroy(Employee $employee)
     {
-        //
+        return view('employees.destroy');
     }
 }
