@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Attendance;
 use Illuminate\Http\Request;
+use App\Models\Employee;
 
 class AttendanceController extends Controller
 {
@@ -12,7 +13,8 @@ class AttendanceController extends Controller
      */
     public function index()
     {
-        return view('attendances.index');
+        $attendances = Attendance::all();
+        return view('attendances.index', ['attendances' => $attendances]);
     }
 
     /**
@@ -20,7 +22,8 @@ class AttendanceController extends Controller
      */
     public function create()
     {
-        return view('attendances.create');
+        $employees = Employee::all();
+        return view('attendances.create', ['employees' => $employees]);
     }
 
     /**
@@ -28,7 +31,15 @@ class AttendanceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $attendance = new Attendance();
+        $attendance->employee_id = $request->input('employee_id');
+        $attendance->date = $request->input('date');
+        $attendance->clock_in_time = $request->input('clock_in_time');
+        $attendance->departure_time = $request->input('departure_time');
+
+        $attendance->save();
+
+        return redirect()->route('attendances.index');
     }
 
     /**
@@ -36,7 +47,7 @@ class AttendanceController extends Controller
      */
     public function show(Attendance $attendance)
     {
-        return view('attendances.show');
+        return view('attendances.show', ['attendance' => $attendance]);
     }
 
     /**
@@ -44,7 +55,8 @@ class AttendanceController extends Controller
      */
     public function edit(Attendance $attendance)
     {
-        return view('attendances.edit');
+        $employees = Employee::all();
+        return view('attendances.edit', ['attendance' => $attendance], ['employees' => $employees]);
     }
 
     /**
@@ -52,7 +64,14 @@ class AttendanceController extends Controller
      */
     public function update(Request $request, Attendance $attendance)
     {
-        //
+        $attendance->employee_id = $request->input('employee_id');
+        $attendance->date = $request->input('date');
+        $attendance->clock_in_time = $request->input('clock_in_time');
+        $attendance->departure_time = $request->input('departure_time');
+
+        $attendance->save();
+
+        return redirect()->route('attendances.index');
     }
 
     /**
@@ -60,6 +79,7 @@ class AttendanceController extends Controller
      */
     public function destroy(Attendance $attendance)
     {
-        return view('attendances.destroy');
+        $attendance->delete();
+        return redirect()->route('attendances.index')->with('status', 'Attendance deleted successfully');
     }
 }

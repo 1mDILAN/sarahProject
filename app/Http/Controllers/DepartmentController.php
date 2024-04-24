@@ -12,7 +12,8 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        return view('departments.index');
+        $departments = Department::all();
+        return view('departments.index', ['departments' => $departments]);
     }
 
     /**
@@ -28,7 +29,14 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $department = new Department();
+        $department->name = $request->input('name');
+        $department->location = $request->input('location');
+        $department->phone_number = $request->input('phone_number');
+
+        $department->save();
+
+        return redirect()->route('departments.index');
     }
 
     /**
@@ -36,7 +44,7 @@ class DepartmentController extends Controller
      */
     public function show(Department $department)
     {
-        return view('departments.show');
+        return view('departments.show', ['department' => $department]);
     }
 
     /**
@@ -44,7 +52,7 @@ class DepartmentController extends Controller
      */
     public function edit(Department $department)
     {
-        return view('departments.edit');
+        return view('departments.edit', ['department' => $department]);
     }
 
     /**
@@ -52,7 +60,13 @@ class DepartmentController extends Controller
      */
     public function update(Request $request, Department $department)
     {
-        //
+        $department->name = $request->input('name');
+        $department->location = $request->input('location');
+        $department->phone_number = $request->input('phone_number');
+
+        $department->save();
+
+        return redirect()->route('departments.index');
     }
 
     /**
@@ -60,6 +74,7 @@ class DepartmentController extends Controller
      */
     public function destroy(Department $department)
     {
-        return view('departments.destroy');
+        $department->delete();
+        return redirect()->route('departments.index')->with('success', 'Department deleted successfully');
     }
 }

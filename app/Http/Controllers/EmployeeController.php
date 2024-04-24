@@ -57,7 +57,8 @@ class EmployeeController extends Controller
      */
     public function edit(Employee $employee)
     {
-        return view('employees.edit');
+        $departments = Department::all();
+        return view('employees.edit', ['employee' => $employee, 'departments' => $departments]);
     }
 
     /**
@@ -65,7 +66,16 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, Employee $employee)
     {
-        //
+        $employee->name = $request->input('name');
+        $employee->surname = $request->input('surname');
+        $employee->position = $request->input('position');
+        $employee->department_id = $request->input('department_id');
+        $employee->hiring_date = $request->input('hiring_date');
+        $employee->salary = $request->input('salary');
+
+        $employee->save();
+
+        return redirect()->route('employees.index');
     }
 
     /**
@@ -73,6 +83,7 @@ class EmployeeController extends Controller
      */
     public function destroy(Employee $employee)
     {
-        return view('employees.destroy');
+        $employee->delete();
+        return redirect()->route('employees.index')->with('status', 'Employee deleted successfully');
     }
 }

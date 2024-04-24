@@ -22,27 +22,41 @@
                                 <th scope="col">Hiring Date</th>
                                 <th scope="col">Salary</th>
                                 <th scope="col">Actions</th>
-                              </tr>
+                            </tr>
                         </thead>
                         <tbody>
-                        @forelse($employees as $employee)
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $employee->id }}</td>
-                                <td>{{ $employee->name }}</td>
-                                <td>{{ $employee->surname }}</td>
-                                <td>{{ $employee->position }}</td>
-                                <td>{{ $employee->department->name }}</td>
-                                <td>{{ $employee->hiring_date }}</td>
-                                <td>{{ $employee->salary }}</td>
-                                <td>
-                                    <div class="btn-group w-full" role="group">
-                                        <a href="{{ route('employees.edit', $employee) }}" class="btn btn-outline-warning">Edit</a>
-                                        <a href="{{ route('employees.destroy', $employee) }}" class="btn btn-outline-danger">Delete</a>
-                                    </div>
-                                </td>
-                            </tr>
-                        @endforeach
+                            @forelse($employees as $employee)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $employee->id }}</td>
+                                    <td>{{ $employee->name }}</td>
+                                    <td>{{ $employee->surname }}</td>
+                                    <td>{{ $employee->position }}</td>
+                                    <td>{{ $employee->department->name }}</td>
+                                    <td>{{ $employee->hiring_date }}</td>
+                                    <td>{{ $employee->salary }}</td>
+                                    <td>
+                                        <div class="btn-group w-full">
+                                            <a href="{{ route('employees.edit', $employee->id) }}"
+                                                class="btn btn-outline-warning">Edit</a>
+                                            <form method="POST"
+                                                action="{{ route('employees.destroy', $employee->id) }}"
+                                                style="display: none;" id="delete-form-{{ $employee->id }}">
+                                                @csrf
+                                                @method('DELETE')
+                                            </form>
+                                            <a href="#" class="btn btn-outline-danger"
+                                                onclick="event.preventDefault(); document.getElementById('delete-form-{{ $employee->id }}').submit();">
+                                                Delete
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="6">No departments found.</td>
+                                </tr>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>
