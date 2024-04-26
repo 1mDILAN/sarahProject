@@ -20,7 +20,7 @@ Siga los pasos a continuación para configurar el proyecto SarahProject:
 1. **Clonar el Repositorio:**
 
    ```
-   git clone <URL_DEL_REPOSITORIO>
+   git clone https://github.com/1mDILAN/sarahProject.git
    ```
 
 2. **Instalar Dependencias:**
