@@ -8,7 +8,7 @@ Este documento proporciona instrucciones detalladas para configurar y ejecutar e
 
 Antes de comenzar, asegúrese de tener instalados los siguientes requisitos en su sistema:
 
-- PHP >= 7.4
+- PHP >= 8.2
 - Composer
 - MySQL o cualquier otro sistema de gestión de bases de datos compatible con Laravel
 - Git
@@ -36,7 +36,7 @@ Siga los pasos a continuación para configurar el proyecto SarahProject:
    Duplique el archivo `.env.example` y renómbrelo como `.env`. Luego, actualice las siguientes configuraciones según su entorno:
 
    - `DB_CONNECTION`: Configúrelo para su sistema de gestión de bases de datos (por ejemplo, `mysql`).
-   - `DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD`: Configure estos parámetros para acceder a su base de datos.
+   - `DB_HOST`, `DB_PORT`, `DB_DATABASE=saraDB`, `DB_USERNAME=root`, `DB_PASSWORD`: Configure estos parámetros para acceder a su base de datos.
 
 4. **Generar Clave de Aplicación:**
 
