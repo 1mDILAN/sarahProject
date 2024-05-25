@@ -1,4 +1,4 @@
-# Documentación de Configuración y Ejecución del Proyecto SarahProject
+# Documentación de Configuración y Ejecución del Proyecto SisvenVUE
 
 ## Introducción
 
@@ -76,4 +76,4 @@ Una vez que la aplicación esté configurada y en funcionamiento, puede comenzar
 
 Con estas instrucciones, debería poder configurar y ejecutar el proyecto SarahProject en su entorno local. Si encuentra algún problema durante el proceso de configuración, consulte la documentación oficial de Laravel o comuníquese con el equipo de desarrollo para obtener ayuda adicional.
 
-¡Gracias por utilizar SarahProject!
+¡Gracias por utilizar SisvenVUE!
